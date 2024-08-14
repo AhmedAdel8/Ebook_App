@@ -1,3 +1,4 @@
+import 'package:ebook_app/Features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:ebook_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
@@ -19,18 +20,19 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1),
     );
     slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0, 3), end: Offset.zero)
             .animate(animationController);
 
     animationController.forward();
-    slidingAnimation.addListener(() {
-      setState(() {
+  }
 
-      });
-    });
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
   }
 
   @override
@@ -43,13 +45,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         const SizedBox(
           height: 4,
         ),
-        SlideTransition(
-          position: slidingAnimation,
-          child: const Text(
-            'Read Free Books',
-            textAlign: TextAlign.center,
-          ),
-        ),
+        SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
   }
