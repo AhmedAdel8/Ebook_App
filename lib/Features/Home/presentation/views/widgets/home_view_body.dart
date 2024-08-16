@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ebook_app/Features/Home/presentation/views/widgets/Featured_Books_List_View.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
     return Column(
       children: [
         CustomAppBar(),
-        CustomListViewItem(),
+        FeaturedBooksListView(),
       ],
     );
   }
