@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ebook_app/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:ebook_app/constants.dart';
 import 'package:ebook_app/core/utils/assets.dart';
 import 'package:ebook_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BestSellerListViemItem extends StatelessWidget {
   const BestSellerListViemItem({super.key});
@@ -32,8 +34,7 @@ class BestSellerListViemItem extends StatelessWidget {
           SizedBox(
             width: 30,
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * .5,
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,6 +64,8 @@ class BestSellerListViemItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    Spacer(),
+                    BookRating(),
                   ],
                 ),
               ],
