@@ -3,8 +3,8 @@
 import 'package:ebook_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
-class FeaturedListViewItem extends StatelessWidget {
-  const FeaturedListViewItem({super.key});
+class CuatomBookImage extends StatelessWidget {
+  const CuatomBookImage({super.key});
 
   @override
   Widget build(BuildContext context) {
