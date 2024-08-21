@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:ebook_app/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:ebook_app/core/utils/styles.dart';
@@ -41,7 +42,13 @@ class BookDetailsViewBody extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-          )
+          ),
+          SizedBox(
+            height: 18,
+          ),
+          BookRating(
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
         ],
       ),
     );
