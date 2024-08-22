@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ebook_app/Features/Home/presentation/views/widgets/book_rating.dart';
