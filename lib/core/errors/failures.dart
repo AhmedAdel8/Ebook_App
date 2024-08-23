@@ -2,3 +2,6 @@ abstract class Failure{                    //كلاس مش هيتم انشاء �
 
 }
 
+class ServerFailure extends Failure{
+  
+}
