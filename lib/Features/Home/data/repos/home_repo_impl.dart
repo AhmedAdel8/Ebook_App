@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:ebook_app/Features/Home/data/models/book_model/book_model.dart';
 import 'package:ebook_app/Features/Home/data/repos/home_repo.dart';
 import 'package:ebook_app/core/errors/failures.dart';
@@ -21,7 +24,17 @@ class HomeRepoImpl implements HomeRepo {
 
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      if (e is DioError) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      } else {
+        return left(
+          ServerFailure(
+            e.toString(),
+          ),
+        );
+      }
     }
   }
 
