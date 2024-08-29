@@ -10,7 +10,7 @@ import 'package:ebook_app/core/utils/api_service.dart';
 class HomeRepoImpl implements HomeRepo {
   final ApiService apiService;
 
-  HomeRepoImpl({required this.apiService});
+  HomeRepoImpl(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
