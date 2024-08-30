@@ -17,7 +17,7 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: CuatomBookImage(
+          child: CustomBookImage(
             imageUrl: 'https://pngimg.com/uploads/book/book_PNG51090.png',
           ),
         ),
@@ -47,6 +47,8 @@ class BookDetailsSection extends StatelessWidget {
           height: 18,
         ),
         BookRating(
+          rating: 5,
+          count: 250,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         SizedBox(

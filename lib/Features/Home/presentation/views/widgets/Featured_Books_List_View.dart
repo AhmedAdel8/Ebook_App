@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:ebook_app/Features/Home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:ebook_app/core/widgets/custom_error_widget.dart';
@@ -19,14 +18,16 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .3,
             child: ListView.builder(
-              physics:const BouncingScrollPhysics(),
-              itemCount: state.books.length,
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return  Padding(
+                  return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: CuatomBookImage(
-                      imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                    child: CustomBookImage(
+                      imageUrl: state
+                              .books[index].volumeInfo.imageLinks?.thumbnail ??
+                          'https://books.goalkicker.com/DotNETFrameworkBook/DotNETFrameworkGrow.png',
                     ),
                   );
                 }),

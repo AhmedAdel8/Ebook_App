@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
+import 'package:ebook_app/Features/Home/data/models/book_model/book_model.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/book_rating.dart';
+import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:ebook_app/constants.dart';
 import 'package:ebook_app/core/utils/app_router.dart';
 import 'package:ebook_app/core/utils/assets.dart';
@@ -9,8 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViemItem extends StatelessWidget {
-  const BookListViemItem({super.key});
+  const BookListViemItem({super.key, required this.bookModel});
 
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,22 +24,10 @@ class BookListViemItem extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.5 / 4, // width / height.
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.red,
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      AssetsData.testImage,
-                    ),
-                  ),
-                ),
-              ),
+            CustomBookImage(
+              imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             Expanded(
@@ -44,18 +35,18 @@ class BookListViemItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Harry Potter and the Goblet of Fire ',
+                    bookModel.volumeInfo.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20.copyWith(
                       fontFamily: kGtSectraFine,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    'J.K. Rowling',
+                    bookModel.volumeInfo.authors![0],
                     style: Styles.textStyle14,
                   ),
                   SizedBox(
@@ -64,13 +55,16 @@ class BookListViemItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Spacer(),
-                      BookRating(),
+                      BookRating(
+                        rating:  bookModel.volumeInfo.averageRating?.round() ?? 0,
+                        count: bookModel.volumeInfo.ratingsCount ?? 0,
+                      ),
                     ],
                   ),
                 ],
