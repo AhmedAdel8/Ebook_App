@@ -1,8 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:ebook_app/Features/Home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:ebook_app/core/widgets/custom_error_widget.dart';
 import 'package:ebook_app/core/widgets/custom_loading_indicator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
@@ -16,11 +19,15 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .3,
             child: ListView.builder(
+              physics:const BouncingScrollPhysics(),
+              itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: CuatomBookImage(),
+                  return  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: CuatomBookImage(
+                      imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   );
                 }),
           );
