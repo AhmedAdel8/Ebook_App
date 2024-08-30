@@ -5,7 +5,6 @@ import 'package:ebook_app/Features/Home/presentation/views/widgets/book_rating.d
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_item.dart';
 import 'package:ebook_app/constants.dart';
 import 'package:ebook_app/core/utils/app_router.dart';
-import 'package:ebook_app/core/utils/assets.dart';
 import 'package:ebook_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
