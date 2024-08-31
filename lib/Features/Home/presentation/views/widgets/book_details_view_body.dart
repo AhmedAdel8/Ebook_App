@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ebook_app/Features/Home/data/models/book_model/book_model.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/Similar_Books_Section.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/books_Details_Section.dart';
 import 'package:ebook_app/Features/Home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -19,7 +20,9 @@ class BookDetailsViewBody extends StatelessWidget {
             child: Column(
               children: [
                 CustomBookDetailsAppBar(),
-                BookDetailsSection(),
+                BookDetailsSection(
+                  book: bookModel,
+                ),
                 Expanded(
                   child: SizedBox(
                     height: 50,
